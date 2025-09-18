@@ -5,10 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0',   // ✅ listen on all interfaces
-    strictPort: true,  // fail instead of trying another port
+    host: '0.0.0.0',   // listen on all interfaces
+    strictPort: true,  // fail if port is taken
     watch: {
-      usePolling: true // useful in Docker for file changes
-    }
+      usePolling: true // useful in Docker
+    },
+    allowedHosts: [
+      'businesslens.onrender.com' // ✅ add your Render domain
+    ]
   }
 })
