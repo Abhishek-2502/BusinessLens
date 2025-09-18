@@ -17,6 +17,7 @@
 * [AI Integration](#ai-integration)
 * [Stripe Billing](#stripe-billing)
 * [Authentication & Security](#authentication--security)
+* [Deployement Architecture](#deployment-architecture)
 * [Screenshots](#screenshots)
 * [Other Resources](#other-resources)
 * [License](#license)
@@ -152,6 +153,10 @@ Seamless integration with **Stripe** allows:
 - Backend middleware for route protection
 
 ---
+
+## Deployment Architecture
+
+  ![Deployement Architecture](<Images/Deployment_Architecture.png>)
 
 ## Screenshots
 

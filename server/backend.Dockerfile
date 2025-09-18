@@ -21,6 +21,6 @@ CMD ["npm", "run", "dev"]
 
 
 # docker build -t businesslens-backend -f server/backend.Dockerfile .
-# docker run -p 5000:5000 --env-file ./server/.env businesslens-backend
+# docker run -p 5000:5000 -d --env-file ./server/.env businesslens-backend
 
 
