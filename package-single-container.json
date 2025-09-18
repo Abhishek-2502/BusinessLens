@@ -1,10 +1,12 @@
 {
-  "name": "smart-saas-dashboard-frontend",
+  "name": "smart-saas-dashboard",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "vite",
+    "server": "cd server && node server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -12,6 +14,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.15",
     "axios": "^1.5.0",
+    "concurrently": "^8.2.1",
     "date-fns": "^2.30.0",
     "dotenv": "^16.5.0",
     "lucide-react": "^0.263.1",
