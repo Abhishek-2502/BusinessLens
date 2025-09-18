@@ -110,7 +110,9 @@ cd server
 npm install
 ```
 
-### 3. Run the App
+### 3. Rename package.json according to Deployment.txt
+
+### 4. Run the App
 
 ```bash
 # Go back to root and start both frontend & backend

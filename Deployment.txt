@@ -7,10 +7,10 @@ server/.env
 ----MULTI-CONTAINER (WITH AND WITHOUT NGINX)----
 backend.Dockerfile
 frontend.Dockerfile
-frontend.Dockerfile_With_nginx
+frontend.Dockerfile_With_nginx          --> Should be renamed to frontend.Dockerfile if you want to use this
 docker-compose.yaml
 
 ----FOR SINGLE DOCKER CONTAINER----
 Dockerfile
-docker-compose-single-container.yaml
-package-single-container.json
+docker-compose-single-container.yaml    --> Should be renamed to docker-compose.yaml if you want to use this
+package-single-container.json           --> Should be renamed to package.json if you want to use this
