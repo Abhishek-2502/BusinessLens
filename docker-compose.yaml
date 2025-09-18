@@ -4,6 +4,10 @@ services:
   frontend:
     build:
       context: .
+      # With nginx setup
+      # dockerfile: frontendnginx.Dockerfile
+
+      # Without nginx setup
       dockerfile: frontend.Dockerfile
     ports:
       # With nginx setup
