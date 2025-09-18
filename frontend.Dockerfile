@@ -15,3 +15,7 @@ EXPOSE 5173
 
 # Run dev server
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+
+
+# docker build -t businesslens-frontend -f frontend.Dockerfile .
+# docker run -p 5173:5173 -d businesslens-frontend

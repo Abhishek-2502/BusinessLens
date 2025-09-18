@@ -20,3 +20,8 @@ EXPOSE 5173 5000
 
 # Default command: run both frontend and backend
 CMD ["npm", "run", "dev"]
+
+
+# docker build -t businesslens-fullstack -f Dockerfile .
+# docker run -p 5173:5173 -p 5000:5000 -d --env-file ./server/.env businesslens-fullstack
+
