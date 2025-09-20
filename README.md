@@ -159,6 +159,9 @@ Seamless integration with **Stripe** allows:
   ![Deployement Architecture](<Images/Deployment_Architecture1.png>)
   ![Deployement Architecture](<Images/Deployment_Architecture2.png>)
 
+  Using Docker-Compose
+  ![Deployement Architecture](<Images/Deployment_Architecture3.png>)
+
 ## Screenshots
 
   ![alt text](<Images/1.png>) 
