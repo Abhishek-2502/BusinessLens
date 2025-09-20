@@ -1,0 +1,36 @@
+---
+- name: Uninstall Docker and clean up
+  hosts: all   # or target specific group/host
+  become: yes
+
+  tasks:
+    - name: Remove Docker related packages
+      apt:
+        name:
+          - docker
+          - docker-engine
+          - docker.io
+          - containerd
+          - runc
+        state: absent
+
+    - name: Purge docker.io package
+      apt:
+        name: docker.io
+        state: absent
+        purge: yes
+
+    - name: Autoremove unused packages
+      apt:
+        autoremove: yes
+        purge: yes
+
+    - name: Remove Docker data directory
+      file:
+        path: /var/lib/docker
+        state: absent
+
+    - name: Remove Containerd data directory
+      file:
+        path: /var/lib/containerd
+        state: absent

@@ -9,8 +9,8 @@ ansible jenkins-master -i ~/inventory.ini -m ping
 ansible-vault encrypt secrets.yaml
 
 # Frontend and Backend setup
-ansible-playbook -i inventory.ini docker_install.yml -l backend,frontend
-ansible-playbook -i inventory.ini java_install.yml -l backend,frontend
+ansible-playbook -i inventory.ini docker_install.yaml -l backend,frontend
+ansible-playbook -i inventory.ini java_install.yaml -l backend,frontend
 
 # Jenkins Master setup
 ansible-playbook -i inventory.ini jenkins.yaml

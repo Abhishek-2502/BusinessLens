@@ -14,7 +14,7 @@
         state: present
 
     - name: Verify Java installation
-      command: java -version
+      shell: java -version 2>&1
       register: java_version
       ignore_errors: yes
 
