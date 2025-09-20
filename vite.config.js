@@ -5,10 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0',   // ✅ listen on all interfaces
-    strictPort: true,  // fail instead of trying another port
-    watch: {
-      usePolling: true // useful in Docker for file changes
-    }
-  }
+    host: '0.0.0.0',        // listen on all interfaces
+        strictPort: true,   // fail if port is taken
+        watch: {
+          usePolling: true  // useful in Docker
+        },
+        allowedHosts: [
+          '34.68.223.130:5173' // ✅ add your Frontend domain
+        ]
+      }
 })
