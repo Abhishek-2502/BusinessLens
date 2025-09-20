@@ -1,0 +1,23 @@
+---
+- name: Install and configure Java
+  hosts: all          # Can run on any host group
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install OpenJDK 11
+      apt:
+        name: openjdk-11-jdk
+        state: present
+
+    - name: Verify Java installation
+      command: java -version
+      register: java_version
+      ignore_errors: yes
+
+    - name: Show installed Java version
+      debug:
+        msg: "{{ java_version.stdout }}"

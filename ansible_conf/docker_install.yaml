@@ -1,0 +1,23 @@
+---
+- name: Install and configure Docker
+  hosts: all          # Can run on any host group
+  become: yes
+
+  tasks:
+    - name: Update apt cache and install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add user to Docker group
+      user:
+        name: abhishek25022004
+        groups: docker
+        append: yes

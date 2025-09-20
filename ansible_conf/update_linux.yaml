@@ -1,0 +1,15 @@
+---
+- name: Update and upgrade all packages on hosts
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to latest
+      apt:
+        upgrade: dist
+        autoremove: yes
+        autoclean: yes
