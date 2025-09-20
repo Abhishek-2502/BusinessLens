@@ -1,3 +1,33 @@
+# -------------------------
+# Terraform
+# -------------------------
+# Variable files containing secrets
+*.tfvars
+terraform.tfvars
+
+# State files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform directories
+.terraform/
+
+# CLI config
+.terraformrc
+terraform.rc
+
+hale-tractor-428316-f6-4064ff30a4eb.json
+
+
 # Logs
 logs
 *.log

@@ -1,8 +1,8 @@
 https://github.com/Abhishek-2502/Ansible
 
 # Testing ansible can access it or not
-ansible backend -i ~/inventory.ini -m ping
-ansible frontend -i ~/inventory.ini -m ping
+ansible backend1 -i ~/inventory.ini -m ping
+ansible frontend1 -i ~/inventory.ini -m ping
 ansible jenkins-master -i ~/inventory.ini -m ping
 
 # secrets.yaml
