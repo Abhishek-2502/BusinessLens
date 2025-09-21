@@ -156,7 +156,11 @@ Seamless integration with **Stripe** allows:
 
 ## Deployment Architecture
 
-  ![Deployement Architecture](<Images/Deployment_Architecture.png>)
+  ![Deployement Architecture](<Images/Deployment_Architecture1.png>)
+  ![Deployement Architecture](<Images/Deployment_Architecture2.png>)
+
+  Using Docker-Compose
+  ![Deployement Architecture](<Images/Deployment_Architecture3.png>)
 
 ## Screenshots
 
