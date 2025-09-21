@@ -1,0 +1,20 @@
+---
+- name: Install Docker Compose using apt
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update apt cache and install Docker Compose
+      apt:
+        name: docker-compose
+        state: present
+        update_cache: yes
+
+    - name: Verify Docker Compose installation
+      command: docker-compose --version
+      register: compose_version
+      changed_when: false
+
+    - name: Show installed Docker Compose version
+      debug:
+        msg: "Installed Docker Compose version is {{ compose_version.stdout }}"

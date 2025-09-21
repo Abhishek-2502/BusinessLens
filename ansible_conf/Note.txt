@@ -1,9 +1,9 @@
 https://github.com/Abhishek-2502/Ansible
 
 # Testing ansible can access it or not
-ansible backend1 -i ~/inventory.ini -m ping
-ansible frontend1 -i ~/inventory.ini -m ping
-ansible jenkins-master -i ~/inventory.ini -m ping
+ansible backend1 -i inventory.ini -m ping
+ansible frontend1 -i inventory.ini -m ping
+ansible jenkins-master -i inventory.ini -m ping
 
 # secrets.yaml
 ansible-vault encrypt secrets.yaml
@@ -13,7 +13,7 @@ ansible-playbook -i inventory.ini docker_install.yaml -l backend,frontend
 ansible-playbook -i inventory.ini java_install.yaml -l backend,frontend
 
 # Jenkins Master setup
-ansible-playbook -i inventory.ini jenkins.yaml
+ansible-playbook -i inventory.ini jenkins_master.yaml
 ansible-playbook -i inventory.ini jenkins_password.yaml
 
 # Backend setup (with vault password prompt)

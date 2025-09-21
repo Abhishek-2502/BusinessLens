@@ -1,0 +1,36 @@
+---
+- name: Uninstall Docker Compose and clean up
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Remove docker-compose package
+      apt:
+        name: docker-compose
+        state: absent
+        purge: yes
+
+    - name: Autoremove unused packages
+      apt:
+        autoremove: yes
+        purge: yes
+
+    - name: Remove leftover Docker Compose binary (if installed manually)
+      file:
+        path: /usr/local/bin/docker-compose
+        state: absent
+
+    - name: Verify docker-compose is removed
+      command: which docker-compose
+      register: compose_check
+      ignore_errors: true
+      changed_when: false
+
+    - name: Show removal status
+      debug:
+        msg: >-
+          {% if compose_check.rc != 0 %}
+          Docker Compose successfully removed
+          {% else %}
+          Docker Compose still exists at {{ compose_check.stdout }}
+          {% endif %}
