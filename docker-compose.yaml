@@ -5,25 +5,25 @@ services:
     build:
       context: .
       # With nginx setup
-      # dockerfile: frontendnginx.Dockerfile
+      dockerfile: frontendnginx.Dockerfile
 
       # Without nginx setup
-      dockerfile: frontend.Dockerfile
+      # dockerfile: frontend.Dockerfile
     ports:
       # With nginx setup
-      # - "80:80"
+      - "80:80"
 
       # Without nginx setup
-      - "5173:5173"
+      # - "5173:5173"
     volumes:
       - .:/app
       - /app/node_modules
     environment:
       # With nginx setup
-      # - VITE_API_URL=http://backend:5000/api
+      - VITE_API_URL=http://backend:5000/api
 
       # Without nginx setup
-      - VITE_API_URL=http://localhost:5000/api
+      # - VITE_API_URL=http://localhost:5000/api
 
   backend:
     build:
@@ -33,6 +33,6 @@ services:
       - "5000:5000"
     volumes:
       - ./server:/app/server
-      - /app/node_modules
+      - /app/server/node_modules
     env_file:
       - ./server/.env

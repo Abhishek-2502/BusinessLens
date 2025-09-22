@@ -7,5 +7,6 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+      - /app/server/node_modules
     env_file:
       - ./server/.env   
