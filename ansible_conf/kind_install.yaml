@@ -1,0 +1,62 @@
+---
+- name: Install Docker, Kind, and kubectl
+  hosts: all
+  become: true
+  vars:
+    kind_version: "v0.29.0"
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker if not present
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Add current user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Install Kind if not present
+      block:
+        - name: Determine architecture
+          set_fact:
+            arch: "{{ 'amd64' if ansible_architecture == 'x86_64' else 'arm64' if ansible_architecture == 'aarch64' else 'unsupported' }}"
+
+        - name: Fail if architecture unsupported
+          fail:
+            msg: "Unsupported architecture: {{ ansible_architecture }}"
+          when: arch == "unsupported"
+
+        - name: Download kind binary
+          get_url:
+            url: "https://kind.sigs.k8s.io/dl/{{ kind_version }}/kind-linux-{{ arch }}"
+            dest: /usr/local/bin/kind
+            mode: '0755'
+          when: not (ansible_facts.packages.kind is defined)
+
+    - name: Install kubectl if not present
+      block:
+        - name: Get latest stable kubectl version
+          shell: curl -Ls https://dl.k8s.io/release/stable.txt
+          register: kubectl_version
+
+        - name: Download kubectl
+          get_url:
+            url: "https://dl.k8s.io/release/{{ kubectl_version.stdout }}/bin/linux/amd64/kubectl"
+            dest: /usr/local/bin/kubectl
+            mode: '0755'
+          when: not (ansible_facts.packages.kubectl is defined)
+
+    - name: Confirm versions
+      shell: |
+        docker --version
+        kind --version
+        kubectl version --client --output=yaml
+      register: versions
+
+    - debug:
+        var: versions.stdout_lines
