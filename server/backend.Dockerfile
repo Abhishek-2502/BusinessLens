@@ -20,7 +20,11 @@ EXPOSE 5000
 CMD ["npm", "run", "dev"]
 
 
-# docker build -t businesslens-backend -f server/backend.Dockerfile .
-# docker run -p 5000:5000 -d --env-file ./server/.env businesslens-backend
+# docker build -t businesslens/backend:latest -f server/backend.Dockerfile .
+# docker run -p 5000:5000 -d --name businesslens-backend --env-file ./server/.env businesslens/backend:latest
 
+
+# Push to Docker Hub
+# docker tag businesslens/backend:latest abhi25022004/businesslens-backend:latest
+# docker push abhi25022004/businesslens-backend:latest
 

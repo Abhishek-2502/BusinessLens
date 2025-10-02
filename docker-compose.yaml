@@ -17,13 +17,15 @@ services:
       - "5173:5173"
     volumes:
       - .:/app
-      - /app/node_modules
     environment:
       # With nginx setup
       # - VITE_API_URL=http://backend:5000/api
 
       # Without nginx setup
-      - VITE_API_URL=http://localhost:5000/api
+      # - VITE_API_URL=http://localhost:5000/api
+
+      # For local testing with minikube
+      - VITE_API_URL=http://127.0.0.1:5000/api
 
   backend:
     build:
@@ -33,6 +35,5 @@ services:
       - "5000:5000"
     volumes:
       - ./server:/app/server
-      - /app/server/node_modules
     env_file:
       - ./server/.env

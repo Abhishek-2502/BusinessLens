@@ -17,5 +17,9 @@ EXPOSE 5173
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
 
-# docker build -t businesslens-frontend -f frontend.Dockerfile .
-# docker run -p 5173:5173 -d businesslens-frontend
+# docker build -t businesslens/frontend:latest -f frontend.Dockerfile .
+# docker run -p 5173:5173 -d --name businesslens-frontend businesslens/frontend:latest
+
+# Push to Docker Hub
+# docker tag businesslens/frontend:latest abhi25022004/businesslens-frontend:latest
+# docker push abhi25022004/businesslens-frontend:latest

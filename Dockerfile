@@ -22,6 +22,10 @@ EXPOSE 5173 5000
 CMD ["npm", "run", "dev"]
 
 
-# docker build -t businesslens-fullstack -f Dockerfile .
-# docker run -p 5173:5173 -p 5000:5000 -d --env-file ./server/.env businesslens-fullstack
+# docker build -t businesslens/fullstack:latest -f Dockerfile .
+# docker run -p 5173:5173 -p 5000:5000 -d --name businesslens-fullstack --env-file ./server/.env businesslens/fullstack:latest
+
+# Push to Docker Hub
+# docker tag businesslens/fullstack:latest abhi25022004/businesslens-fullstack:latest
+# docker push abhi25022004/businesslens-fullstack:latest
 

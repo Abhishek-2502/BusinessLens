@@ -28,7 +28,11 @@ CMD ["nginx", "-g", "daemon off;"]
 
 
 # Build the Docker image
-# docker build -t businesslens-frontend-prod -f frontend.Dockerfile .
+# docker build -t businesslens/frontend:latest -f frontend.Dockerfile .
 
 # Run the container
-# docker run -p 80:80 -d businesslens-frontend-prod
+# docker run -p 80:80 -d --name businesslens-frontend businesslens/frontend:latest
+
+# Push to Docker Hub
+# docker tag businesslens/frontend:latest abhi25022004/businesslens-frontend:latest
+# docker push abhi25022004/businesslens-frontend:latest

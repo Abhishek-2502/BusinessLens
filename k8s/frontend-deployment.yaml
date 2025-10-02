@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: abhi25022004/businesslens-frontend:latest  # replace with your image
+        imagePullPolicy: Always  
+        ports:
+        - containerPort: 5173
+        env:
+        - name: VITE_API_URL
+          value: "http://127.0.0.1:5000/api"

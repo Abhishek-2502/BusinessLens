@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: abhi25022004/businesslens-backend:latest  # replace with your image
+        imagePullPolicy: Always  # Always pull the latest image
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+            name: backend-env
